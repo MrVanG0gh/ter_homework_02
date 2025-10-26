@@ -8,6 +8,14 @@ resource "yandex_vpc_subnet" "develop" {
   v4_cidr_blocks  = var.default_cidr
 }
 
+resource "yandex_vpc_subnet" "develop2" {
+  name            = var.vpc_name2
+  zone            = var.default_zone2
+  network_id      = yandex_vpc_network.develop.id
+  v4_cidr_blocks  = var.default_cidr2
+}
+
+
 data "yandex_compute_image" "ubuntu" {
   family          = var.family_name
 }
@@ -61,7 +69,7 @@ resource "yandex_compute_instance" "platform_db" {
     preemptible   = var.vm_db_hw_preemptible
   }
   network_interface {
-    subnet_id     = yandex_vpc_subnet.develop.id
+    subnet_id     = yandex_vpc_subnet.develop2.id
     nat           = var.vm_db_hw_nat
   }
 
