@@ -51,6 +51,8 @@
 2. Объявите нужные переменные в файле variables.tf, обязательно указывайте тип переменной. Заполните их **default** прежними значениями из main.tf. 
 3. Проверьте terraform plan. Изменений быть не должно. 
 
+### Решение 2
+
 variables.tf
 ```
 ###cloud vars
@@ -200,6 +202,63 @@ resource "yandex_compute_instance" "platform" {
 1. Создайте в корне проекта файл 'vms_platform.tf' . Перенесите в него все переменные первой ВМ.
 2. Скопируйте блок ресурса и создайте с его помощью вторую ВМ в файле main.tf: **"netology-develop-platform-db"** ,  ```cores  = 2, memory = 2, core_fraction = 20```. Объявите её переменные с префиксом **vm_db_** в том же файле ('vms_platform.tf').  ВМ должна работать в зоне "ru-central1-b"
 3. Примените изменения.
+
+### Решение 3
+`vms_platform.tf`
+```
+### Ex.3 vars
+variable "vm_db_zone" {
+  type = string
+  default = "ru-central1-b"
+  description = "Рабочая зона"
+}
+
+variable "vm_db_name" {
+  type        = string
+  default     = "netology-develop-platform-web"
+  description = "Имя виртуальной машины"
+}
+
+variable "vm_db_platform_id" {
+  type = string
+  default = "standard-v3"
+  description = "ID виртуальной платформы"
+}
+
+variable "vm_db_hw_cores" {
+  type = number
+  default = 2
+  description = "Количество виртуальных ядер"
+}
+variable "vm_db_hw_memory" {
+  type = number
+  default = 2
+  description = "Объем оперативной памяти"
+}
+
+variable "vm_db_core_frac" {
+  type = number
+  default = 20
+  description = "Ограничение пиковой производительности CPU"
+}
+
+variable "vm_db_hw_preemptible" {
+  type = bool
+  default = true
+  description = "Прерываемость работы ВМ"
+}
+variable "vm_db_hw_nat" {
+  type = bool
+  default = true
+  description = "Активировать NAT"
+}
+variable "vm_db_hw_serial_port_enable" {
+  type = number
+  default = 1
+  description = "Активировать серийный порт для удаленного доступа"
+}
+```
+![Screen_03_01](https://github.com/MrVanG0gh/ter_homework_02/blob/main/Screenshots/Screenshot_03_01.png)
 
 
 ### Задание 4

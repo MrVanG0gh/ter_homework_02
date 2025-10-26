@@ -90,3 +90,9 @@ variable "vm_web_hw_serial_port_enable" {
   default = 1
   description = "Активировать серийный порт для удаленного доступа"
 }
+
+variable "vm_web_zone" {
+  type = string
+  default = "ru-central1-a"
+  description = "Рабочая зона"
+}
