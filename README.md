@@ -215,7 +215,7 @@ variable "vm_db_zone" {
 
 variable "vm_db_name" {
   type        = string
-  default     = "netology-develop-platform-web"
+  default     = "netology-develop-platform-db"
   description = "Имя виртуальной машины"
 }
 
@@ -258,7 +258,10 @@ variable "vm_db_hw_serial_port_enable" {
   description = "Активировать серийный порт для удаленного доступа"
 }
 ```
+Чтобы вторая виртуальная машина смогла работать в зоне "ru-central1-b" потребовалось прописать в файле main.tf еще одну подсеть.
+
 ![Screen_03_01](https://github.com/MrVanG0gh/ter_homework_02/blob/main/Screenshots/Screenshot_03_01.png)
+![Screen_03_02](https://github.com/MrVanG0gh/ter_homework_02/blob/main/Screenshots/Screenshot_03_02.png)
 
 
 ### Задание 4
