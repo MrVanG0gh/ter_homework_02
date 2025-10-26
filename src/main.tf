@@ -44,6 +44,9 @@ resource "yandex_compute_instance" "platform" {
 
 ### new resource Ex.3
 
+data "yandex_compute_image" "ubuntu" {
+  family          = var.family_name
+}
 resource "yandex_compute_instance" "platform_db" {
   name            = var.vm_db_name
   platform_id     = var.vm_db_platform_id
