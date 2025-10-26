@@ -2,13 +2,15 @@
 
 ### Чек-лист готовности к домашнему заданию
 
-1. Зарегистрирован аккаунт в Yandex Cloud. Использован промокод на грант.
-2. Установлен инструмент Yandex CLI.
-3. Исходный код для выполнения задания расположен в директории [**02/src**](https://github.com/netology-code/ter-homeworks/tree/main/02/src).
+1. Зарегистрирован аккаунт в Yandex Cloud. Использован промокод на грант. [+]
+2. Установлен инструмент Yandex CLI. [+]
+3. Исходный код для выполнения задания расположен в директории [**02/src**](https://github.com/netology-code/ter-homeworks/tree/main/02/src). [+]
 
 ### Задание 1
 В качестве ответа всегда полностью прикладывайте ваш terraform-код в git.
 Убедитесь что ваша версия **Terraform** ~>1.12.0
+![Screen_1_1](https://github.com/MrVanG0gh/ter_homework_02/blob/main/Screenshots/Screenshot_1_01.png)
+
 
 1. Изучите проект. В файле variables.tf объявлены переменные для Yandex provider.
 2. Создайте сервисный аккаунт и ключ. [service_account_key_file](https://terraform-provider.yandexcloud.net).
