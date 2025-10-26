@@ -7,7 +7,7 @@ variable "vm_db_zone" {
 
 variable "vm_db_name" {
   type        = string
-  default     = "netology-develop-platform-web"
+  default     = "netology-develop-platform-db"
   description = "Имя виртуальной машины"
 }
 
