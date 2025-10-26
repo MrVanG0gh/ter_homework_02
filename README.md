@@ -9,7 +9,7 @@
 ### Задание 1
 В качестве ответа всегда полностью прикладывайте ваш terraform-код в git.
 Убедитесь что ваша версия **Terraform** ~>1.12.0
-![Screen_1_1](https://github.com/MrVanG0gh/ter_homework_02/blob/main/Screenshots/Screenshot_1_01.png)
+![Screen_01_01](https://github.com/MrVanG0gh/ter_homework_02/blob/main/Screenshots/Screenshot_01_01.png)
 
 
 1. Изучите проект. В файле variables.tf объявлены переменные для Yandex provider.
