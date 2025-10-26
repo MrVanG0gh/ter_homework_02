@@ -1,7 +1,7 @@
 ### Ex.3 vars
 variable "vm_db_zone" {
   type = string
-  default = "ru-central1-b"
+  default = "ru-central1-a"
   description = "Рабочая зона"
 }
 
