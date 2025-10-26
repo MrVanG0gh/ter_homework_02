@@ -65,7 +65,7 @@ variable "vm_web_hw_cores" {
 }
 variable "vm_web_hw_memory" {
   type = number
-  default = 1
+  default = 2
   description = "Объем оперативной памяти"
 }
 
