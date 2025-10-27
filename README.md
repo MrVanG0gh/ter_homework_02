@@ -1,4 +1,4 @@
-Домашнее задание к занятию «Основы Terraform. Yandex Cloud» - `Иншаков Владимир`
+# Домашнее задание к занятию «Основы Terraform. Yandex Cloud» - `Иншаков Владимир`
 
 ### Чек-лист готовности к домашнему заданию
 
@@ -271,6 +271,9 @@ variable "vm_db_hw_serial_port_enable" {
 
 В качестве решения приложите вывод значений ip-адресов команды ```terraform output```.
 
+### Решение 4
+
+![Screen_04_01](https://github.com/MrVanG0gh/ter_homework_02/blob/main/Screenshots/Screenshot_04_01.png)
 
 ### Задание 5
 
