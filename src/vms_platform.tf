@@ -5,11 +5,13 @@ variable "vm_db_zone" {
   description = "Рабочая зона"
 }
 
+/*
 variable "vm_db_name" {
   type        = string
   default     = "netology-develop-platform-db"
   description = "Имя виртуальной машины"
 }
+*/
 
 variable "vm_db_platform_id" {
   type = string
@@ -17,11 +19,13 @@ variable "vm_db_platform_id" {
   description = "ID виртуальной платформы"
 }
 
+/*
 variable "vm_db_hw_cores" {
   type = number
   default = 2
   description = "Количество виртуальных ядер"
 }
+
 variable "vm_db_hw_memory" {
   type = number
   default = 2
@@ -34,6 +38,7 @@ variable "vm_db_core_frac" {
   description = "Ограничение пиковой производительности CPU"
 }
 
+ */
 variable "vm_db_hw_preemptible" {
   type = bool
   default = true
@@ -44,9 +49,11 @@ variable "vm_db_hw_nat" {
   default = true
   description = "Активировать NAT"
 }
+
+/*
 variable "vm_db_hw_serial_port_enable" {
   type = number
   default = 1
   description = "Активировать серийный порт для удаленного доступа"
 }
-
+ */

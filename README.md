@@ -296,6 +296,30 @@ output "VMs_output" {
 
 ### Решение 5
 
+`locals.tf`:
+```
+locals {
+  lplatform    = "netology-develop-platform"
+  lweb         = "web"
+  ldb          = "db"
+  vm_web_lname = "${ local.lplatform }-${ local.lweb }"
+  vm_db_lname  = "${ local.lplatform }-${ local.ldb }"
+}
+```
+В файле `main.tf` изменения следующие:
+```
+...
+# name            = var.vm_web_name
+  name            = local.vm_web_lname
+...
+
+# name            = var.vm_db_name
+  name            = local.vm_db_lname
+...
+```
+
+Новое именование виртуальных машин через локальные переменные оставили текущую конфигурацию без изменений. 
+![Screen_05_01](https://github.com/MrVanG0gh/ter_homework_02/blob/main/Screenshots/Screenshot_05_01.png)
 
 
 ### Задание 6
@@ -334,4 +358,55 @@ output "VMs_output" {
 5. Найдите и закоментируйте все, более не используемые переменные проекта.
 6. Проверьте terraform plan. Изменений быть не должно.
 
+### Решение 6
+Объединенная map-переменная vms_resources:
+```
+# Ex. 6
+variable "vms_resources" {
+  type = map(map(number))
+  description = "Resources combo for VMs"
+  default = {
+    vm_web_resources = {
+      cores = 2
+      memory = 1
+      core_fraction = 20
+    }
+    vm_db_resources = {
+      cores = 2
+      memory = 2
+      core_fraction = 20
+    }
+  }
+}
+```
+
+Изменения в файле `main.tf`:
+
+```
+resource "yandex_compute_instance" "platform_web" {
+  # name          = var.vm_web_name
+  name            = local.vm_web_lname
+  platform_id     = var.vm_web_platform_id
+  zone            = var.vm_web_zone
+  resources {
+    # cores       = var.vm_web_hw_cores
+    cores         = var.vms_resources.vm_web_resources.cores
+    # memory      = var.vm_web_hw_memory
+    memory        = var.vms_resources.vm_web_resources.memory
+    # core_fraction = var.vm_web_core_frac
+    core_fraction = var.vms_resources.vm_web_resources.core_fraction
+  }
+...
+
+resource "yandex_compute_instance" "platform_db" {
+  # name          = var.vm_db_name
+  name            = local.vm_db_lname
+  platform_id     = var.vm_db_platform_id
+  zone            = var.vm_db_zone
+  resources {
+    cores         = var.vms_resources.vm_db_resources.cores
+    memory        = var.vms_resources.vm_db_resources.memory
+    core_fraction = var.vms_resources.vm_db_resources.core_fraction
+  }
+```
 ------

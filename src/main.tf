@@ -24,9 +24,12 @@ resource "yandex_compute_instance" "platform_web" {
   platform_id     = var.vm_web_platform_id
   zone            = var.vm_web_zone
   resources {
-    cores         = var.vm_web_hw_cores
-    memory        = var.vm_web_hw_memory
-    core_fraction = var.vm_web_core_frac
+    # cores       = var.vm_web_hw_cores
+    cores         = var.vms_resources.vm_web_resources.cores
+    # memory      = var.vm_web_hw_memory
+    memory        = var.vms_resources.vm_web_resources.memory
+    # core_fraction = var.vm_web_core_frac
+    core_fraction = var.vms_resources.vm_web_resources.core_fraction
   }
   boot_disk {
     initialize_params {
@@ -40,12 +43,13 @@ resource "yandex_compute_instance" "platform_web" {
     subnet_id     = yandex_vpc_subnet.develop.id
     nat           = var.vm_web_hw_nat
   }
-
+metadata = var.common_metadata
+  /*
   metadata = {
     serial-port-enable = var.vm_web_hw_serial_port_enable
     ssh-keys           = "ubuntu:${var.vms_ssh_root_key}"
   }
-
+*/
 }
 
 
@@ -53,30 +57,34 @@ resource "yandex_compute_instance" "platform_web" {
 
 resource "yandex_compute_instance" "platform_db" {
   # name          = var.vm_db_name
-  name            = local.vm_db_lname
-  platform_id     = var.vm_db_platform_id
-  zone            = var.vm_db_zone
+  name        = local.vm_db_lname
+  platform_id = var.vm_db_platform_id
+  zone        = var.vm_db_zone
   resources {
-    cores         = var.vm_db_hw_cores
-    memory        = var.vm_db_hw_memory
-    core_fraction = var.vm_db_core_frac
+    cores         = var.vms_resources.vm_db_resources.cores
+    memory        = var.vms_resources.vm_db_resources.memory
+    core_fraction = var.vms_resources.vm_db_resources.core_fraction
   }
   boot_disk {
     initialize_params {
-      image_id    = data.yandex_compute_image.ubuntu.image_id
+      image_id = data.yandex_compute_image.ubuntu.image_id
     }
   }
   scheduling_policy {
-    preemptible   = var.vm_db_hw_preemptible
+    preemptible = var.vm_db_hw_preemptible
   }
   network_interface {
-    subnet_id     = yandex_vpc_subnet.develop2.id
-    nat           = var.vm_db_hw_nat
+    subnet_id = yandex_vpc_subnet.develop2.id
+    nat       = var.vm_db_hw_nat
   }
 
-  metadata = {
+  metadata = var.common_metadata
+}
+  /*
+   metadata = {
     serial-port-enable = var.vm_db_hw_serial_port_enable
     ssh-keys           = "ubuntu:${var.vms_ssh_root_key}"
   }
 
 }
+*/
