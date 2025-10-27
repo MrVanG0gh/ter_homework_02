@@ -413,4 +413,11 @@ resource "yandex_compute_instance" "platform_db" {
 После команды `terraform plan` изменений в работе созданных виртуальных машин нет.
 ![Screen_06_01](https://github.com/MrVanG0gh/ter_homework_02/blob/main/Screenshots/Screenshot_06_01.png)
 
+
+P.S.: Скриншоты консоли, output Terraform`a, и консольки с ssh (`curl ifconfig.me`)
+![Screen_Extra_01](https://github.com/MrVanG0gh/ter_homework_02/blob/main/Screenshots/Extra_01.png)
+![Screen_Extra_02](https://github.com/MrVanG0gh/ter_homework_02/blob/main/Screenshots/Extra_02.png)
+![Screen_Extra_03](https://github.com/MrVanG0gh/ter_homework_02/blob/main/Screenshots/Extra_03.png)
+![Screen_Extra_04](https://github.com/MrVanG0gh/ter_homework_02/blob/main/Screenshots/Extra_04.png)
+
 ------
