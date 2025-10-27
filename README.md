@@ -273,6 +273,19 @@ variable "vm_db_hw_serial_port_enable" {
 
 ### Решение 4
 
+`outputs.tf`:
+```
+output "VMs_output" {
+  value = {
+    VM_web_name   = yandex_compute_instance.platform_web.name
+    VM_web_FQDN   = yandex_compute_instance.platform_web.fqdn
+    VM_web_ext_ip = yandex_compute_instance.platform_web.network_interface[0].nat_ip_address
+    VM_db_name    = yandex_compute_instance.platform_db.name
+    VM_web_FQDN   = yandex_compute_instance.platform_db.fqdn
+    VM_web_ext_ip = yandex_compute_instance.platform_db.network_interface[0].nat_ip_address
+  }
+}
+```
 ![Screen_04_01](https://github.com/MrVanG0gh/ter_homework_02/blob/main/Screenshots/Screenshot_04_01.png)
 
 ### Задание 5
