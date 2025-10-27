@@ -7,7 +7,7 @@ resource "yandex_vpc_subnet" "develop" {
   network_id      = yandex_vpc_network.develop.id
   v4_cidr_blocks  = var.default_cidr
 }
-
+## новая подсеть для работы в другой зоне
 resource "yandex_vpc_subnet" "develop2" {
   name            = var.vpc_name2
   zone            = var.default_zone2
@@ -15,12 +15,12 @@ resource "yandex_vpc_subnet" "develop2" {
   v4_cidr_blocks  = var.default_cidr2
 }
 
-
 data "yandex_compute_image" "ubuntu" {
   family          = var.family_name
 }
 resource "yandex_compute_instance" "platform_web" {
-  name            = var.vm_web_name
+  # name          = var.vm_web_name
+  name            = local.vm_web_lname
   platform_id     = var.vm_web_platform_id
   zone            = var.vm_web_zone
   resources {
@@ -52,7 +52,8 @@ resource "yandex_compute_instance" "platform_web" {
 ### new resource Ex.3
 
 resource "yandex_compute_instance" "platform_db" {
-  name            = var.vm_db_name
+  # name          = var.vm_db_name
+  name            = local.vm_db_lname
   platform_id     = var.vm_db_platform_id
   zone            = var.vm_db_zone
   resources {
