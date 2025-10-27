@@ -409,4 +409,8 @@ resource "yandex_compute_instance" "platform_db" {
     core_fraction = var.vms_resources.vm_db_resources.core_fraction
   }
 ```
+Все неиспользуемые переменные задокументированы.
+После команды `terraform plan` изменений в работе созданных виртуальных машин нет.
+![Screen_06_01](https://github.com/MrVanG0gh/ter_homework_02/blob/main/Screenshots/Screenshot_06_01.png)
+
 ------
